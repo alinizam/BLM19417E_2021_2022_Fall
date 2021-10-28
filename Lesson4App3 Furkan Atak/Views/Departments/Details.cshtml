@@ -1,0 +1,72 @@
+﻿@model Lesson4App2.Models.Department
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+    <div>
+        <h4>Department</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.DepartmentId">Edit</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employees.ElementAt(0).FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employees.ElementAt(0).LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employees.ElementAt(0).Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employees.ElementAt(0).Department)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Employees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DepartmentId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table><br/>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+</html>

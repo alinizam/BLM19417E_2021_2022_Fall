@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Lesson5Application1.Models;
+using Lesson4App2.Models;
 
-namespace Lesson5Application1.Controllers
+namespace Lesson4App2.Controllers
 {
     public class EmployeesController : Controller
     {
@@ -60,14 +60,6 @@ namespace Lesson5Application1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dept = _context.Departments.FirstOrDefault(d => d.DepartmentId == employee.DepartmentId);
-                if (dept == null)
-                {
-                    /*_context.Departments.Add(new Department() { DepartmentId = (int)employee.DepartmentId, Name = "NULL",
-                                                      Employees = new List<Employee>() {employee }*/
-                    _context.Departments.Add(new Department() { DepartmentId = (int)employee.DepartmentId, Name = "NULL" }    
-                );
-                } 
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,6 +92,10 @@ namespace Lesson5Application1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,DepartmentId,Salary")] Employee employee)
         {
+
+            var employee1 = await _context.Employees.FindAsync(id);
+            _context.Entry(employee1).State = EntityState.Detached;
+
             if (id != employee.EmployeeId)
             {
                 return NotFound();
