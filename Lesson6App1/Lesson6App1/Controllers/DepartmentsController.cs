@@ -6,48 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lesson6App1.Models;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
 namespace Lesson6App1.Controllers
 {
-    public class EmployeesController : Controller
+    public class DepartmentsController : Controller
     {
         private readonly EmployeeDBContext _context;
-        private readonly ILogger<EmployeeDBContext> _logger;
 
-        public EmployeesController(EmployeeDBContext context, ILogger<EmployeeDBContext> logger)
+        public DepartmentsController(EmployeeDBContext context)
         {
             _context = context;
-            _logger = logger;
+
         }
 
-        // GET: Employees
+        // GET: Departments
         public async Task<IActionResult> Index()
         {
-            ViewData["EmpOpen"]=HttpContext.Session.GetString("Opened");
-            var deptId = new SqlParameter
-            {
-                ParameterName= "deptId",
-                SqlDbType=System.Data.SqlDbType.Int,
-                Value=5,
-                Direction = System.Data.ParameterDirection.Input
-            };
-            var deptNameSql = new SqlParameter
-            {
-                ParameterName = "deptName",
-                SqlDbType = System.Data.SqlDbType.VarChar,
-                Size=30,
-                Direction = System.Data.ParameterDirection.Output
-            };
-            _context.Database.ExecuteSqlRaw("EXEC  [dbo].[getDepartmentName]  @deptId, @deptName OUTPUT",deptId, deptNameSql);
-            string deptName = (string)deptNameSql.Value;
-            ViewData["DeptName"] = deptName;
-            return View(await _context.Employees.ToListAsync());
+            HttpContext.Session.SetString("Opened","Department sceen opened");
+            return View(await _context.Departments.ToListAsync());
         }
 
-        // GET: Employees/Details/5
+        // GET: Departments/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,39 +35,39 @@ namespace Lesson6App1.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var department = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(department);
         }
 
-        // GET: Employees/Create
+        // GET: Departments/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: Departments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,DepartmentId,Salary")] Employee employee)
+        public async Task<IActionResult> Create([Bind("DepartmentId,Name")] Department department)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(department);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(department);
         }
 
-        // GET: Employees/Edit/5
+        // GET: Departments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,22 +75,22 @@ namespace Lesson6App1.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee == null)
+            var department = await _context.Departments.FindAsync(id);
+            if (department == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(department);
         }
 
-        // POST: Employees/Edit/5
+        // POST: Departments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,DepartmentId,Salary")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,Name")] Department department)
         {
-            if (id != employee.EmployeeId)
+            if (id != department.DepartmentId)
             {
                 return NotFound();
             }
@@ -119,12 +99,12 @@ namespace Lesson6App1.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(department);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (!DepartmentExists(department.DepartmentId))
                     {
                         return NotFound();
                     }
@@ -135,10 +115,10 @@ namespace Lesson6App1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(department);
         }
 
-        // GET: Employees/Delete/5
+        // GET: Departments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,30 +126,30 @@ namespace Lesson6App1.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var department = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(department);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Departments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
+            var department = await _context.Departments.FindAsync(id);
+            _context.Departments.Remove(department);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool DepartmentExists(int id)
         {
-            return _context.Employees.Any(e => e.EmployeeId == id);
+            return _context.Departments.Any(e => e.DepartmentId == id);
         }
     }
 }

@@ -17,6 +17,6 @@ namespace Lesson6App1.Models
         public int Salary { get; set; }
 
         public int DepartmentId { get; set; }
-        public Department dept { get; set; }
+       // public Department dept { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace Lesson6App1
         {
             services.AddControllersWithViews();
             services.AddDbContext<EmployeeDBContext>();
+            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,7 @@ namespace Lesson6App1
 
             app.UseRouting();
 
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
