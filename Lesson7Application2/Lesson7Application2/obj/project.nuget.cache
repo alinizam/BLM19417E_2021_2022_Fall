@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zMg+Czdq4fzGTCXENKSxTXGDlthgNidGpczU2HKF8bXqgKBTxxkqwkCtfOOZvnqEUULYVNr/k0SC0ceLRmzz7g==",
+  "dgSpecHash": "HkdpdjPWJV8rS2fUgG1cAgdSNnxiYF5SeOt+SO1Bkg8MTCvglKfY3RkR7jnHsqqLoHVnvYOOyddsrhj/JmUIVw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
+  "projectFilePath": "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\FSMBLM1\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\alinizam\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

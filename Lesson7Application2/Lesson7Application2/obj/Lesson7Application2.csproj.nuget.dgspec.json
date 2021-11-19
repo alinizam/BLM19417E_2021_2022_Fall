@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj": {}
+    "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj": {
+    "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
+        "projectUniqueName": "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
         "projectName": "Lesson7Application2",
-        "projectPath": "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
-        "packagesPath": "C:\\Users\\FSMBLM1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\FSMBLM1\\source\\repos\\Lesson7Application2\\Lesson7Application2\\obj\\",
+        "projectPath": "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\Lesson7Application2.csproj",
+        "packagesPath": "C:\\Users\\alinizam\\.nuget\\packages\\",
+        "outputPath": "D:\\calisma\\verilen dersler\\Web Design and Programming\\2021_2022 Güz\\kodlar\\BLM19417E_2021_2022_Fall\\Lesson7Application2\\Lesson7Application2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\FSMBLM1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alinizam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

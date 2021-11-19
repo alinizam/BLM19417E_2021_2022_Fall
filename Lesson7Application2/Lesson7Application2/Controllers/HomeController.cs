@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Lesson7Application2.Controllers
@@ -30,6 +31,24 @@ namespace Lesson7Application2.Controllers
                 departmentList = JsonConvert.DeserializeObject<List<Department>>(returnValue);             
             }
             return View(departmentList);
+        }
+        public IActionResult PostDepartment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostDepartment(Department d)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                string jsonInString = JsonConvert.SerializeObject(d);
+                var response = await httpClient.PostAsync("https://localhost:44318/api/Departments"
+                    , new StringContent(jsonInString, Encoding.UTF8, "application/json"));
+
+            }
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

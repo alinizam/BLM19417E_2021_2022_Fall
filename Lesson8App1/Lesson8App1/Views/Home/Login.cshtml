@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/Home/Login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post" >
+        <input type="text" name="username" placeholder="username" />
+        <input type="text" name="password" placeholder="password" />
+        <input type="submit" name="login" /> 
+    </form>
+</body>
+</html>
+
